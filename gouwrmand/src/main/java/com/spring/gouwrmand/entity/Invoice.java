@@ -45,3 +45,8 @@ public class Invoice {
 		
 	
 }
+
+//getinvoice(id)
+//add
+//getinvoices(from to data)
+//updateInvoice

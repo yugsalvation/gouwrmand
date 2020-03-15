@@ -6,20 +6,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="role")
+@Table(name = "role")
 public class Role {
 
 	@Id
-	@Column(name="role_id")	
+	@Column(name = "role_id")
 	private int role_id;
-	
-	@Column(name="role_title")	
-	private String role_title;
-	
-	@Column(name="role_description")	
-	private String role_description;
 
-	
+	@Column(name = "role_title")
+	private String role_title;
+
+	@Column(name = "role_description")
+	private String role_description;
 
 	public int getRole_id() {
 		return role_id;
@@ -44,6 +42,9 @@ public class Role {
 	public void setRole_description(String role_description) {
 		this.role_description = role_description;
 	}
-	
-	
+
 }
+
+//add
+//update
+//delete
