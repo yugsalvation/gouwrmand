@@ -13,7 +13,7 @@ public class FoodItem {
 	private int food_id;
 	
 	@Column(name="food_type")	
-	private int food_type;
+	private String food_type;
 	
 	public int getFood_id() {
 		return food_id;
@@ -23,20 +23,28 @@ public class FoodItem {
 		this.food_id = food_id;
 	}
 
-	public int getFood_type() {
+	public String getFood_type() {
 		return food_type;
 	}
 
-	public void setFood_type(int food_type) {
+	public void setFood_type(String food_type) {
 		this.food_type = food_type;
 	}
 
-	public int getFood_name() {
+	public String getFood_name() {
 		return food_name;
 	}
 
-	public void setFood_name(int food_name) {
+	public void setFood_name(String food_name) {
 		this.food_name = food_name;
+	}
+
+	public double getFood_discount() {
+		return food_discount;
+	}
+
+	public void setFood_discount(double food_discount) {
+		this.food_discount = food_discount;
 	}
 
 	public double getFood_price() {
@@ -49,11 +57,11 @@ public class FoodItem {
 
 	
 
-	public int getFood_description() {
+	public String getFood_description() {
 		return food_description;
 	}
 
-	public void setFood_description(int food_description) {
+	public void setFood_description(String food_description) {
 		this.food_description = food_description;
 	}
 
@@ -66,7 +74,7 @@ public class FoodItem {
 	}
 
 	@Column(name="food_name")	
-	private int food_name;
+	private String food_name;
 	
 	@Column(name="food_price")	
 	private double food_price;
@@ -75,7 +83,7 @@ public class FoodItem {
 	private double food_discount;
 	
 	@Column(name="food_description")	
-	private int food_description;
+	private String food_description;
 	
 	@Column(name="food_status")	
 	private int food_status;
