@@ -8,116 +8,110 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-	@Table(name="customer")
-	public class Customer {
-		
+@Table(name = "customer")
+public class Customer {
 
-		@Id
-		@Column(name="customer_id")	
-		private int customer_id;
-		
-		@Column(name="name")	
-		private String name;
-		
-		@Column(name="address")	
-		private String address;
-		
-		@Column(name="date_of_birth")	
-		private Date date_of_birth;
-		
-		@Column(name="password")	
-		private String password;
-		
-		@Column(name="email")	
-		private String email;
-		
-		@Column(name="phone_no")	
-		private long phone_no;
-		
-		@Column(name="role_id")	
-		private int role_id;
-		
-		@Column(name="user_status")	
-		private int user_status;
+	@Id
+	@Column(name = "customer_id")
+	private int customer_id;
 
-		public int getCustomer_id() {
-			return customer_id;
-		}
+	@Column(name = "name")
+	private String name;
 
-		public void setCustomer_id(int customer_id) {
-			this.customer_id = customer_id;
-		}
+	@Column(name = "address")
+	private String address;
 
-		public String getName() {
-			return name;
-		}
+	@Column(name = "date_of_birth")
+	private Date date_of_birth;
 
-		public void setName(String name) {
-			this.name = name;
-		}
+	@Column(name = "password")
+	private String password;
 
-		public String getAddress() {
-			return address;
-		}
+	@Column(name = "email")
+	private String email;
 
-		public void setAddress(String address) {
-			this.address = address;
-		}
+	@Column(name = "phone_no")
+	private long phone_no;
 
-		public Date getDate_of_birth() {
-			return date_of_birth;
-		}
+	@Column(name = "role_id")
+	private int role_id;
 
-		public void setDate_of_birth(Date date_of_birth) {
-			this.date_of_birth = date_of_birth;
-		}
+	@Column(name = "user_status")
+	private int user_status;
 
-		public String getPassword() {
-			return password;
-		}
+	public int getCustomer_id() {
+		return customer_id;
+	}
 
-		public void setPassword(String password) {
-			this.password = password;
-		}
+	public void setCustomer_id(int customer_id) {
+		this.customer_id = customer_id;
+	}
 
-		public String getEmail() {
-			return email;
-		}
+	public String getName() {
+		return name;
+	}
 
-		public void setEmail(String email) {
-			this.email = email;
-		}
+	public void setName(String name) {
+		this.name = name;
+	}
 
-		public long getPhone_no() {
-			return phone_no;
-		}
+	public String getAddress() {
+		return address;
+	}
 
-		public void setPhone_no(long phone_no) {
-			this.phone_no = phone_no;
-		}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-		
-		public int getRole_id() {
-			return role_id;
-		}
+	public Date getDate_of_birth() {
+		return date_of_birth;
+	}
 
-		public void setRole_id(int role_id) {
-			this.role_id = role_id;
-		}
+	public void setDate_of_birth(Date date_of_birth) {
+		this.date_of_birth = date_of_birth;
+	}
 
-		public int getUser_status() {
-			return user_status;
-		}
+	public String getPassword() {
+		return password;
+	}
 
-		public void setUser_status(int user_status) {
-			this.user_status = user_status;
-		}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-		
+	public String getEmail() {
+		return email;
+	}
 
-		
-	}		
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
+	public long getPhone_no() {
+		return phone_no;
+	}
+
+	public void setPhone_no(long phone_no) {
+		this.phone_no = phone_no;
+	}
+
+	public int getRole_id() {
+		return role_id;
+	}
+
+	public void setRole_id(int role_id) {
+		this.role_id = role_id;
+	}
+
+	public int getUser_status() {
+		return user_status;
+	}
+
+	public void setUser_status(int user_status) {
+		this.user_status = user_status;
+	}
+
+}
 
 //create(cus)
 //update(cusobj)
