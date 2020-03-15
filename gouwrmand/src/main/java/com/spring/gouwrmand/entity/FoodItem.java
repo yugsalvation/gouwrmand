@@ -47,13 +47,7 @@ public class FoodItem {
 		this.food_price = food_price;
 	}
 
-	public int getFood_discount() {
-		return food_discount;
-	}
-
-	public void setFood_discount(int food_discount) {
-		this.food_discount = food_discount;
-	}
+	
 
 	public int getFood_description() {
 		return food_description;
@@ -78,7 +72,7 @@ public class FoodItem {
 	private double food_price;
 	
 	@Column(name="food_discount")	
-	private int food_discount;
+	private double food_discount;
 	
 	@Column(name="food_description")	
 	private int food_description;
