@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 		@Id
 		@Column(name="customer_id")	
-		private String customer_id;
+		private int customer_id;
 		
 		@Column(name="name")	
 		private String name;
@@ -35,16 +35,16 @@ import javax.persistence.Table;
 		private long phone_no;
 		
 		@Column(name="role_id")	
-		private String role_id;
+		private int role_id;
 		
 		@Column(name="user_status")	
-		private String user_status;
+		private int user_status;
 
-		public String getCustomer_id() {
+		public int getCustomer_id() {
 			return customer_id;
 		}
 
-		public void setCustomer_id(String customer_id) {
+		public void setCustomer_id(int customer_id) {
 			this.customer_id = customer_id;
 		}
 
@@ -96,23 +96,26 @@ import javax.persistence.Table;
 			this.phone_no = phone_no;
 		}
 
-		public String getRole_id() {
+		
+		public int getRole_id() {
 			return role_id;
 		}
 
-		public void setRole_id(String role_id) {
+		public void setRole_id(int role_id) {
 			this.role_id = role_id;
 		}
 
-		public String getUser_status() {
+		public int getUser_status() {
 			return user_status;
 		}
 
-		public void setUser_status(String user_status) {
+		public void setUser_status(int user_status) {
 			this.user_status = user_status;
 		}
+
 		
 
+		
 	}		
 
 

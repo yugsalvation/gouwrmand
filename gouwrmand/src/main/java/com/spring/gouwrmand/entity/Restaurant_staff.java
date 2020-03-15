@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Restaurant_staff {
 	@Id
 	@Column(name="staff_id")	
-	private String staff_id;
+	private int staff_id;
 	
 	@Column(name="name")	
 	private String name;
@@ -33,13 +33,15 @@ public class Restaurant_staff {
 	private long phone_no;
 	
 	@Column(name="role_id")	
-	private String role_id;
+	private int role_id;
 
-	public String getStaff_id() {
+	
+
+	public int getStaff_id() {
 		return staff_id;
 	}
 
-	public void setStaff_id(String staff_id) {
+	public void setStaff_id(int staff_id) {
 		this.staff_id = staff_id;
 	}
 
@@ -91,13 +93,15 @@ public class Restaurant_staff {
 		this.phone_no = phone_no;
 	}
 
-	public String getRole_id() {
+	public int getRole_id() {
 		return role_id;
 	}
 
-	public void setRole_id(String role_id) {
+	public void setRole_id(int role_id) {
 		this.role_id = role_id;
 	}
+
+	
 	
 
 }
