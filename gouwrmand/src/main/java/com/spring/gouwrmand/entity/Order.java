@@ -4,28 +4,29 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
-@Table(name="order")
+@Table(name = "order")
 public class Order {
 	@Id
-	@Column(name="order_id")	
+	@Column(name = "order_id")
 	private int order_id;
-	
-	@Column(name="order_cart")	
+
+	@Column(name = "order_cart")
 	private String order_cart;
-	
-	@Column(name="order_total")	
+
+	@Column(name = "order_total")
 	private double order_total;
-	
-	@Column(name="payment_status")	
+
+	@Column(name = "payment_status")
 	private int payment_status;
-	
-	@Column(name="order_status")	
+
+	@Column(name = "order_status")
 	private int order_status;
-	
-	@Column(name="item_quantity")	
+
+	@Column(name = "item_quantity")
 	private String item_quantity;
-	
+
 	public int getOrder_id() {
 		return order_id;
 	}
@@ -82,8 +83,15 @@ public class Order {
 		this.customer_id = customer_id;
 	}
 
-	@Column(name="customer_id")	
+	@Column(name = "customer_id")
 	private String customer_id;
-	
-	
+
 }
+
+
+//add
+//get order
+//delete
+//update
+//get myorders(cust id from to)
+//get orders(from to)

@@ -88,3 +88,8 @@ public class FoodItem {
 	@Column(name="food_status")	
 	private int food_status;
 }
+
+//add
+//delete
+//update
+//get_food_bycat()

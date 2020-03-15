@@ -119,3 +119,10 @@ import javax.persistence.Table;
 	}		
 
 
+//create(cus)
+//update(cusobj)
+//retrieve(id) return cus
+//delete(id), update(cus_status)
+//get_cus_report(from to date)
+
+//
