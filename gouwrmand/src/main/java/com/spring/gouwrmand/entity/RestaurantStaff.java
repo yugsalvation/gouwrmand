@@ -8,34 +8,32 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="restaurant_staff")
-public class Restaurant_staff {
+@Table(name = "restaurant_staff")
+public class RestaurantStaff {
 	@Id
-	@Column(name="staff_id")	
+	@Column(name = "staff_id")
 	private int staff_id;
-	
-	@Column(name="name")	
-	private String name;
-	
-	@Column(name="address")	
-	private String address;
-	
-	@Column(name="date_of_birth")	
-	private Date date_of_birth;
-	
-	@Column(name="password")	
-	private String password;
-	
-	@Column(name="email")	
-	private String email;
-	
-	@Column(name="phone_no")	
-	private long phone_no;
-	
-	@Column(name="role_id")	
-	private int role_id;
 
-	
+	@Column(name = "name")
+	private String name;
+
+	@Column(name = "address")
+	private String address;
+
+	@Column(name = "date_of_birth")
+	private Date date_of_birth;
+
+	@Column(name = "password")
+	private String password;
+
+	@Column(name = "email")
+	private String email;
+
+	@Column(name = "phone_no")
+	private long phone_no;
+
+	@Column(name = "role_id")
+	private int role_id;
 
 	public int getStaff_id() {
 		return staff_id;
@@ -100,8 +98,5 @@ public class Restaurant_staff {
 	public void setRole_id(int role_id) {
 		this.role_id = role_id;
 	}
-
-	
-	
 
 }
