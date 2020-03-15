@@ -9,4 +9,8 @@ public class HomeController {
 	public String firstPage() {
 		return "first";
 	}
+	@RequestMapping("index")
+	public String indexPage() {
+		return "homepage";
+	}
 }
