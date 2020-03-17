@@ -1,67 +1,45 @@
 package com.spring.gouwrmand.controllers;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.spring.gouwrmand.dao.RoleDao;
-import com.spring.gouwrmand.entity.Customer;
-import com.spring.gouwrmand.entity.Role;
-
+import com.spring.gouwrmand.dao.FoodItemDao;
+import com.spring.gouwrmand.entity.FoodItem;
 
 @Controller
 public class HomeController {
 	@Autowired
-	RoleDao r;
-	
-	@RequestMapping("home")
+	private FoodItemDao fooditemdao;
+	@RequestMapping("")
 	public String firstPage() {
-		Role role = new Role();
-		role.setRole_id(1);
-		role.setRole_title("admin");
-		role.setRole_description("high");
-		// = new RoleDaoImpl();
-		r.updateRole(role);
-		System.out.println("Hello......");
+		FoodItem fi=new FoodItem();
+		fi.setFood_type("beverages");
+		fi.setFood_name("Limbupani");
+		fi.setFood_discount(.5);
+		fooditemdao.addFoodItem(fi);
+		
 		return "first";
 	}
-	@RequestMapping("login")
-	public String loginPage() {
-		return "login";
+	@RequestMapping("/home")
+	public String indexPage() {
+		//restaurant side home page
+		return "homepage";
+	}
+	@RequestMapping("/addFoodItem")
+	public String addFoodItem(Model theModel) {
+		FoodItem fi=new FoodItem();
+		theModel.addAttribute("fi",fi);
+		return "addFoodItem";
+	}
+	@RequestMapping("/processAddFoodItem")
+	public String processAddFoodItem(Model theModel,@ModelAttribute("fi") FoodItem fi) {
+		double d=fi.getFood_discount();
+		theModel.addAttribute("description",d);
+		return "first";
 	}
 	
-//	@GetMapping("registration")
-//	public String showRegistration() {
-//		return "registration";
-//	}
-//	
-//	@PostMapping("registration")
-//    public String makeRegistration(@ModelAttribute("userForm") Customer c) {
-//
-//        
-//        return "login";
-//    }
 	
-	 @RequestMapping(value = "/registration", method = RequestMethod.GET)
-	    public String add(Model model) {
-	        model.addAttribute("customer", new Customer());
-	        return "registration";
-	    }
-
-	    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-	    public String processAdd(@Valid Customer c, BindingResult bindingResult) {
-	        if (bindingResult.hasErrors()) {
-	            return "registration";
-	        }
-
-	        return "person-added-successfully";
-	    }
 }
