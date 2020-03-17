@@ -72,7 +72,7 @@ public class RoleDaoImpl implements RoleDao {
 			role = session.get(Role.class, role_id);
 			session.close();
 		} catch (Exception e) {
-			System.out.print("failed update staff operation");
+			System.out.print("failed update staff operation");//
 		}
 		return role;
 		
