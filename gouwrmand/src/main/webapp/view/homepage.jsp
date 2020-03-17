@@ -50,12 +50,16 @@ body{
 <div class="row">
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
   <a class="navbar-brand" href="#">goUWrmand</a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
   <ul class="navbar-nav">
     <li class="nav-item">
       <a class="nav-link" href="javascript:loadFrame('index')">Menu</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="javascript:loadFrame('index')">Add Food Item</a>
+      <a class="nav-link" href="javascript:loadFrame('addFoodItem')">Add Food Item</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">View Orders</a>
@@ -69,9 +73,10 @@ body{
     <li class="nav-item">
       <a class="nav-link">Logout</a>
     </li></ul>
+    </div>
 </nav></div>
 
-<div class="container-fluid center">
+<div class="container-fluid center" >
 <div class="row">
 <div class="col-sm-1"> </div>
 <div class="col-sm-10">
