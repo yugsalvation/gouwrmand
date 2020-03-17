@@ -21,7 +21,7 @@ public class HomeController {
 		fi.setFood_discount(.5);
 		fooditemdao.addFoodItem(fi);
 		
-		
+		//
 		return "first";
 	}
 	@RequestMapping("/home")
