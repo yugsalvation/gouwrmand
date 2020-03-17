@@ -55,7 +55,7 @@ body{
       <a class="nav-link" href="javascript:loadFrame('index')">Menu</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="javascript:loadFrame('index')">Add Food Item</a>
+      <a class="nav-link" href="javascript:loadFrame('addFoodItem')">Add Food Item</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">View Orders</a>
@@ -71,7 +71,7 @@ body{
     </li></ul>
 </nav></div>
 
-<div class="container-fluid center">
+<div class="container-fluid center" >
 <div class="row">
 <div class="col-sm-1"> </div>
 <div class="col-sm-10">
