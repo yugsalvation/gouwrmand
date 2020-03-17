@@ -43,6 +43,7 @@
 <label for="foodname">Food Name:</label><form:input  class="form-control" path="food_name"/> <br/>
 <label for="fooddiscount">Food Discount:</label><form:input  class="form-control" path="food_discount"/> <br/>
 <label for="fooddescription">Food Description:</label><form:input  class="form-control" path="food_description"/>  <br/>
+<form:input  class="form-control" path="food_status" type="hidden" value="1" />
 <div class="row" align="center">
 <div class="col-sm-4"></div>
 <div class="col-sm-4">

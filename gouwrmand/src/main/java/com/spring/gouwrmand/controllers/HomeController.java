@@ -36,7 +36,8 @@ public class HomeController {
 	}
 	@RequestMapping("/processAddFoodItem")
 	public String processAddFoodItem(Model theModel,@ModelAttribute("fi") FoodItem fi) {
-		double d=fi.getFood_discount();
+		fooditemdao.addFoodItem(fi);
+		double d=fi.getFood_status();
 		theModel.addAttribute("description",d);
 		return "first";
 	}
