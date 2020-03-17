@@ -38,6 +38,8 @@ public class Customer {
 
 	@Column(name = "user_status")
 	private int user_status;
+	
+	
 
 	public int getCustomer_id() {
 		return customer_id;

@@ -1,5 +1,7 @@
 package com.spring.gouwrmand.entity;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -26,6 +28,17 @@ public class Order {
 
 	@Column(name = "item_quantity")
 	private String item_quantity;
+	
+	@Column(name = "order_date")
+	private Date order_date;
+
+	public Date getOrder_date() {
+		return order_date;
+	}
+
+	public void setOrder_date(Date order_date) {
+		this.order_date = order_date;
+	}
 
 	public int getOrder_id() {
 		return order_id;
