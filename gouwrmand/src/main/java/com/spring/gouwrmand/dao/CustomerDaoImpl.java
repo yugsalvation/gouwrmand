@@ -9,11 +9,13 @@ import javax.persistence.EntityManager;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.gouwrmand.entity.Customer;
 import com.spring.gouwrmand.entity.Order;
 
+@Repository
 public class CustomerDaoImpl implements CustomerDao {
 
 	@Autowired
@@ -26,7 +28,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		try {
 			session = entitymanager.unwrap(Session.class);
 			session.save(c);
-			session.close();
+			//session.close();
 		} catch (Exception e) {
 			System.out.print("failed addcustomer operation");
 		}
@@ -40,7 +42,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		try {
 			session = entitymanager.unwrap(Session.class);
 			session.update(c);
-			session.close();
+			//session.close();
 		} catch (Exception e) {
 			System.out.print("failed updatecustomer operation");
 		}
@@ -55,7 +57,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		try {
 			session = entitymanager.unwrap(Session.class);
 			customer = session.get(Customer.class, customer_id);
-			session.close();
+			//session.close();
 		} catch (Exception e) {
 			System.out.print("failed updatecustomer operation");
 		}
@@ -71,7 +73,7 @@ public class CustomerDaoImpl implements CustomerDao {
 			Customer customer = session.load(Customer.class, customer_id);
 			customer.setUser_status(0);
 			session.update(customer);
-			session.close();
+			//session.close();
 		} catch (Exception e) {
 			System.out.print("failed delete customer operation");
 		}

@@ -5,11 +5,13 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.gouwrmand.entity.Customer;
 import com.spring.gouwrmand.entity.RestaurantStaff;
 
+@Repository
 public class RestaurantStaffDaoImpl implements RestaurantStaffDao {
 
 	@Autowired
@@ -22,7 +24,7 @@ public class RestaurantStaffDaoImpl implements RestaurantStaffDao {
 		try {
 			session = entitymanager.unwrap(Session.class);
 			session.save(staff);
-			session.close();
+			//session.close();
 		} catch (Exception e) {
 			System.out.print("failed add staff operation");
 		}
@@ -36,8 +38,7 @@ public class RestaurantStaffDaoImpl implements RestaurantStaffDao {
 		try {
 			session = entitymanager.unwrap(Session.class);
 			session.update(staff);
-			;
-			session.close();
+//			session.close();
 		} catch (Exception e) {
 			System.out.print("failed update staff operation");
 		}
@@ -52,7 +53,7 @@ public class RestaurantStaffDaoImpl implements RestaurantStaffDao {
 		try {
 			session = entitymanager.unwrap(Session.class);
 			staff = session.get(RestaurantStaff.class, staff_id);
-			session.close();
+//			session.close();
 		} catch (Exception e) {
 			System.out.print("failed update staff operation");
 		}
@@ -63,12 +64,12 @@ public class RestaurantStaffDaoImpl implements RestaurantStaffDao {
 	@Transactional
 	public void deleteRestaurantStaff(int staff_id) {
 		Session session;
-		RestaurantStaff staff = null;
 		try {
 			session = entitymanager.unwrap(Session.class);
-			staff = session.get(RestaurantStaff.class, staff_id);
-			session.delete(staff);;
-			session.close();
+			RestaurantStaff staff = session.load(RestaurantStaff.class, staff_id);
+			staff.setStaff_status(0);
+			session.update(staff);
+//			session.close();
 		} catch (Exception e) {
 			System.out.print("failed add staff operation");
 		}
