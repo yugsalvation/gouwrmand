@@ -1,12 +1,13 @@
 package com.spring.gouwrmand.controllers;
 
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.gouwrmand.dao.CustomerDao;
 import com.spring.gouwrmand.dao.FoodItemDao;
@@ -50,9 +51,20 @@ public class HomeController {
 	@RequestMapping("/processAddFoodItem")
 	public String processAddFoodItem(Model theModel,@ModelAttribute("fi") FoodItem fi) {
 		fooditemdao.addFoodItem(fi);
-		double d=fi.getFood_status();
-		theModel.addAttribute("description",d);
 		return "first";
+	}
+	
+	@RequestMapping(value="/viewFoodItems",method=RequestMethod.GET)
+	public String viewFoodItems(Model theModel,@RequestParam("category")String c) {
+		List<FoodItem>f=fooditemdao.getFoodByCategory(c);
+		theModel.addAttribute("foodItems",f);
+		return "viewFoodItems";
+	}
+	@RequestMapping("/viewCategories")
+	public String viewCategories(Model theModel) {
+		List<String>f=fooditemdao.getFoodCategories();
+		theModel.addAttribute("foodItems",f);
+		return "viewCategories";
 	}
 	
 	
