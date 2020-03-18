@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>goUWrmand</title>
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
@@ -41,6 +42,7 @@
    <div class="form-group">
 <label for="foodtype">Food Type:</label><form:input  class="form-control" path="food_type"/> <br/>
 <label for="foodname">Food Name:</label><form:input  class="form-control" path="food_name"/> <br/>
+<label for="fooddiscount">Food Price:</label><form:input  class="form-control" path="food_price"/> <br/>
 <label for="fooddiscount">Food Discount:</label><form:input  class="form-control" path="food_discount"/> <br/>
 <label for="fooddescription">Food Description:</label><form:input  class="form-control" path="food_description"/>  <br/>
 <form:input  class="form-control" path="food_status" type="hidden" value="1" />
