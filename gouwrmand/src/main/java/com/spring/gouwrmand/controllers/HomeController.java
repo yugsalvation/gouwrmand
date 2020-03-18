@@ -1,6 +1,5 @@
 package com.spring.gouwrmand.controllers;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,13 +9,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.spring.gouwrmand.dao.CustomerDao;
 import com.spring.gouwrmand.dao.FoodItemDao;
+import com.spring.gouwrmand.dao.RestaurantStaffDao;
+import com.spring.gouwrmand.dao.RoleDao;
+import com.spring.gouwrmand.entity.Customer;
 import com.spring.gouwrmand.entity.FoodItem;
+import com.spring.gouwrmand.entity.RestaurantStaff;
+import com.spring.gouwrmand.entity.Role;
 
 @Controller
 public class HomeController {
 	@Autowired
 	private FoodItemDao fooditemdao;
+	
+	@Autowired
+	private RestaurantStaffDao rs;
+	
 	@RequestMapping("")
 	public String firstPage() {
 		FoodItem fi=new FoodItem();
@@ -56,6 +65,29 @@ public class HomeController {
 		List<String>f=fooditemdao.getFoodCategories();
 		theModel.addAttribute("foodItems",f);
 		return "viewCategories";
+	}
+	
+	
+	@RequestMapping("/check")
+	public String checking() {
+		RestaurantStaff c = new RestaurantStaff();
+//		c.setAddress("sdda");
+//		c.setDate_of_birth(new java.util.Date());
+//		c.setEmail("msi.com");
+//		c.setName("mkmkdssn");
+//		c.setPassword("dadads");
+//		c.setPhone_no(3999999);
+//		c.setRole_id(1);
+//		c.setStaff_status(1);
+		
+//		rs.addStaff(c);
+		//cd.addCustomer(c);
+//		c=rs.getRestaurantStaff(1);
+//		c.setEmail("bha.com");
+//		rs.updateStaff(c);
+		rs.deleteRestaurantStaff(1);
+		
+		return "first";
 	}
 	
 	
