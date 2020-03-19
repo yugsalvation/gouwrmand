@@ -32,18 +32,32 @@ public class FoodItemDaoImpl implements FoodItemDao {
 	}
 
 	@Override
-	public void deleteFoodItem(FoodItem fi) {
-		
+	@Transactional
+	public void deleteFoodItem(int fi) {
+		Session currentSession=entityManager.unwrap(Session.class);
+		String query="update FoodItem set food_status=0 where food_id="+fi;
+		Query thequery=currentSession.createQuery(query);
+		int result=thequery.executeUpdate();
 
 	}
 
 	@Override
+	@Transactional
 	public void updateFoodItem(FoodItem fi) {
-		// TODO Auto-generated method stub
+		Session currentSession=entityManager.unwrap(Session.class);
+	
+		String query="update FoodItem f set f.food_type=\'"+fi.getFood_type()+"\',f.food_name=\'"+fi.getFood_name()+"\',f.food_price="+fi.getFood_price()+",f.food_discount="+fi.getFood_discount()+",f.food_description=\'"+fi.getFood_description()+"\' where f.food_id="+fi.getFood_id();
+
+	
+		Query thequery=currentSession.createQuery(query);
+		
+		int result=thequery.executeUpdate();
+		//currentSession.close();
 
 	}
 
 	@Override
+	@Transactional
 	public List<String> getFoodCategories() {
 		Session currentSession=entityManager.unwrap(Session.class);
 		String query="select distinct food_type from FoodItem f";
@@ -51,15 +65,26 @@ public class FoodItemDaoImpl implements FoodItemDao {
 		List<String>l=(List<String>)theQuery.list();
 		return l;
 	}
+	
 
 	@Override
 	@Transactional
 	public List<FoodItem> getFoodByCategory(String category) {
 		Session currentSession=entityManager.unwrap(Session.class);
-		String query="from FoodItem f where food_type=\'"+category+"\'";
+		String query="from FoodItem f where food_type=\'"+category+"\' and food_status=1";
 		Query <FoodItem> theQuery=currentSession.createQuery(query,FoodItem.class);
 		List<FoodItem>l=theQuery.getResultList();
 		return l;
+	}
+
+	@Override
+	public FoodItem getFoodItem(int fid) {
+		Session currentSession=entityManager.unwrap(Session.class);
+		String query="from FoodItem f where f.food_id=\'"+fid+"\'";
+		Query <FoodItem> theQuery=currentSession.createQuery(query,FoodItem.class);
+		FoodItem f=theQuery.getSingleResult();
+		
+		return f;
 	}
 
 }

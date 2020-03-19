@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+ <meta http-equiv="refresh" content="10" />
 <title>View FoodItems</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
@@ -31,13 +32,18 @@
         <th>Type</th>
        
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
 
     <c:forEach var="food" items="${foodItems}">
-    <c:url var="edit" value="/editFoodItem">
+    <c:url var="edit" value="/updateFoodItem">
     	<c:param name="fid" value="${food.food_id}"></c:param>
+    </c:url>
+     <c:url var="delete" value="/deleteFoodItems">
+    	<c:param name="fid" value="${food.food_id}"></c:param>
+    	<c:param name="category" value="${food.food_type}"></c:param>
     </c:url>
       <tr class="active">
         <td>${food.food_name.toUpperCase()} </td>
@@ -46,7 +52,10 @@
         <td>${food.food_type}</td>
         
         <td>
-        <a href="${edit}">Edit</a>
+        <a href="${edit}" onclick="if(confirm('do you want to edit?'))return true; return false">Edit</a>
+        </td>
+         <td>
+        <a href="${delete}" onclick="if(confirm('do you want to delete?'))return true; return false">Delete</a>
         </td>
       </tr>
      </c:forEach>

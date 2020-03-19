@@ -60,9 +60,25 @@ public class HomeController {
 		return "first";
 	}
 	
+	@RequestMapping(value="/updateFoodItem",method=RequestMethod.GET)
+	public String updateFoodItem(Model theModel,@RequestParam("fid")int fid) {
+		FoodItem fi=fooditemdao.getFoodItem(fid);
+		theModel.addAttribute("fi",fi);
+		return "updateFoodItem";
+	}
+	@RequestMapping("/processUpdateFoodItem")
+	public String processUpdateFoodItem(Model theModel,@ModelAttribute("fi") FoodItem fi) {
+		fooditemdao.updateFoodItem(fi);
+		List<FoodItem>f=fooditemdao.getFoodByCategory(fi.getFood_type());
+		theModel.addAttribute("foodItems",f);
+		theModel.addAttribute("type",fi.getFood_type());
+		return "redirect";
+	}
+	
 	@RequestMapping(value="/viewFoodItems",method=RequestMethod.GET)
 	public String viewFoodItems(Model theModel,@RequestParam("category")String c) {
 		List<FoodItem>f=fooditemdao.getFoodByCategory(c);
+	
 		theModel.addAttribute("foodItems",f);
 		return "viewFoodItems";
 	}
@@ -72,6 +88,14 @@ public class HomeController {
 		theModel.addAttribute("foodItems",f);
 		return "viewCategories";
 	}
+	@RequestMapping(value="/deleteFoodItems",method=RequestMethod.GET)
+	public String deleteFoodItems(Model theModel,@RequestParam("category")String c,@RequestParam("fid")int fid) {
+		fooditemdao.deleteFoodItem(fid);
+		List<FoodItem>f=fooditemdao.getFoodByCategory(c);
+		theModel.addAttribute("foodItems",f);
+		return "viewFoodItems";
+	}
+	
 	
 	
 	@RequestMapping("/check")
