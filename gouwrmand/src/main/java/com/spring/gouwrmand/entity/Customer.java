@@ -1,6 +1,6 @@
 package com.spring.gouwrmand.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,6 +27,7 @@ public class Customer {
 	@Column(name = "password")
 	private String password;
 
+	
 	@Column(name = "email")
 	private String email;
 
