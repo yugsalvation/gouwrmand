@@ -12,12 +12,24 @@ public class Role {
 	@Id
 	@Column(name = "role_id")
 	private int role_id;
+	
 
 	@Column(name = "role_title")
 	private String role_title;
 
 	@Column(name = "role_description")
 	private String role_description;
+	
+	@Column(name = "role_status")
+	private int role_status;
+
+	public int getRole_status() {
+		return role_status;
+	}
+
+	public void setRole_status(int role_status) {
+		this.role_status = role_status;
+	}
 
 	public int getRole_id() {
 		return role_id;
