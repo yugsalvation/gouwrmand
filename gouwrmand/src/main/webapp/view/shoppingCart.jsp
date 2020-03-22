@@ -37,7 +37,7 @@
     </thead>
     <tbody>
 
-    <c:forEach var="food" items="${cart.getCartProducts()}">
+    <c:forEach var="food" items="${cart}">
     <c:url var="edit" value="/updateFoodItem">
     	<c:param name="fid" value="${food.food_id}"></c:param>
     </c:url>

@@ -3,6 +3,8 @@ package com.spring.gouwrmand.controllers;
 
 import java.util.List;
 
+import com.spring.gouwrmand.model.Cart;
+import com.spring.gouwrmand.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,8 @@ import com.spring.gouwrmand.entity.Customer;
 import com.spring.gouwrmand.entity.FoodItem;
 import com.spring.gouwrmand.entity.RestaurantStaff;
 import com.spring.gouwrmand.entity.Role;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class HomeController {
@@ -43,6 +47,14 @@ public class HomeController {
 		//
 		return "first";
 	}
+
+	@RequestMapping(value = { "/shoppingCart" }, method = RequestMethod.GET)
+	public String shoppingCartHandler(HttpServletRequest request, Model model) {
+		Cart myCart = Utils.getCartSession(request);
+		model.addAttribute("cart", myCart);
+		return "shoppingCart";
+	}
+
 	@RequestMapping("/home")
 	public String indexPage() {
 		//restaurant side home page
