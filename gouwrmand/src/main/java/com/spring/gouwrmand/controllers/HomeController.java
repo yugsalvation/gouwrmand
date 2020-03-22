@@ -1,6 +1,9 @@
 package com.spring.gouwrmand.controllers;
 
 
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.gouwrmand.dao.CustomerDao;
 import com.spring.gouwrmand.dao.FoodItemDao;
+import com.spring.gouwrmand.dao.OrderDao;
 import com.spring.gouwrmand.dao.RestaurantStaffDao;
 import com.spring.gouwrmand.dao.RoleDao;
 import com.spring.gouwrmand.entity.Customer;
 import com.spring.gouwrmand.entity.FoodItem;
+import com.spring.gouwrmand.entity.Orders;
 import com.spring.gouwrmand.entity.RestaurantStaff;
 import com.spring.gouwrmand.entity.Role;
 
@@ -25,6 +30,9 @@ import com.spring.gouwrmand.entity.Role;
 public class HomeController {
 	@Autowired
 	private FoodItemDao fooditemdao;
+	
+	@Autowired
+	private OrderDao orderdao;
 	
 	@Autowired
 	private RestaurantStaffDao rs;
@@ -87,6 +95,20 @@ public class HomeController {
 		List<String>f=fooditemdao.getFoodCategories();
 		theModel.addAttribute("foodItems",f);
 		return "viewCategories";
+	}
+	@RequestMapping("/viewTodayOrders")
+	public String viewTodayOrders(Model theModel) {
+		Date d=new Date(Calendar.getInstance().getTime().getTime());
+		List<Orders>o=orderdao.getTodayOrders(d);
+		List<String>c=new ArrayList<String>();
+		for (Orders order : o) {
+			
+			c.add(customerDao.getCustomer(order.getCustomer_id()).getName());
+		}
+	
+		theModel.addAttribute("orders",o);
+		theModel.addAttribute("customername",c);
+		return "viewTodayOrders";
 	}
 	@RequestMapping(value="/deleteFoodItems",method=RequestMethod.GET)
 	public String deleteFoodItems(Model theModel,@RequestParam("category")String c,@RequestParam("fid")int fid) {

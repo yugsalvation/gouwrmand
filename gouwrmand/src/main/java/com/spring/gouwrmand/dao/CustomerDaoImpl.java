@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.gouwrmand.entity.Customer;
-import com.spring.gouwrmand.entity.Order;
+import com.spring.gouwrmand.entity.Orders;
 
 @Repository
 public class CustomerDaoImpl implements CustomerDao {
@@ -81,14 +81,14 @@ public class CustomerDaoImpl implements CustomerDao {
 
 	@Override
 	@Transactional
-	public List<Order> getCustReport(int customer_id, Date from, Date to) {
+	public List<Orders> getCustReport(int customer_id, Date from, Date to) {
 		Session session;
-		List<Order> result = null;
+		List<Orders> result = null;
 		try {
 			session = entitymanager.unwrap(Session.class);
 			String query = "from customer c where c.customer_id=\'" + customer_id + "\' and order_date BETWEEN \'"
 					+ from + "\' and \'" + to + "\'";
-			Query<Order> theQuery = session.createQuery(query, Order.class);
+			Query<Orders> theQuery = session.createQuery(query, Orders.class);
 			result = theQuery.getResultList();
 		} catch (Exception e) {
 			System.out.print("failed get customer report operation");

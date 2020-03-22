@@ -78,6 +78,7 @@ public class FoodItemDaoImpl implements FoodItemDao {
 	}
 
 	@Override
+	@Transactional
 	public FoodItem getFoodItem(int fid) {
 		Session currentSession=entityManager.unwrap(Session.class);
 		String query="from FoodItem f where f.food_id=\'"+fid+"\'";

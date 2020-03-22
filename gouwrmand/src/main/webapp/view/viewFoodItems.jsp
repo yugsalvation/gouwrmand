@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
- <meta http-equiv="refresh" content="10" />
+
 <title>View FoodItems</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
@@ -22,6 +22,7 @@
 </head>
 <body class="bg-light text-dark">
 	<div class="container-fluid">
+	<br/>
   <h1 style="text-align:center;">FOOD ITEMS</h1>
  <table class="table" style="margin-top:3%" >
     <thead>

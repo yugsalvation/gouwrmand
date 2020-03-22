@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+ <meta http-equiv="refresh" content="10" />
 <title>View FoodItems</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
@@ -22,41 +23,30 @@
 <body class="bg-light text-dark">
 	<div class="container-fluid">
 	<br/>
-  <h1 style="text-align:center;">FOOD ITEMS</h1>
-  <br/><br/><br/>
-  <div class="row">
-  <div class="col-sm-4"></div>
-  <div class="col-sm-4">
+  <h1 style="text-align:center;">ORDERS TODAY</h1>
  <table class="table" style="margin-top:3%" >
     <thead>
-      <tr class="active" align="center">
-      
-        <th>Select the Category</th>
+      <tr class="active">
+        <th>id</th>
+        <th>name</th>
        
+        
       </tr>
     </thead>
     <tbody>
 
-    <c:forEach var="food" items="${foodItems}">
+    <c:forEach var="orders" items="${orders}" varStatus="i">
     
-
       <tr class="active">
+        <td>${orders.order_id} </td>
+        <td>${customername.get(i.count-1)}</td>
        
-        <td align="center">
-        <a href="/viewFoodItems?category=${food}">
-        ${food} </a>
-        </td>
-        
-        
-        
       </tr>
      </c:forEach>
     </tbody>
   </table>
-  </div>
-  <div class="col-sm-4"></div>
+  <br/>
 
-  </div>
   </div>
 </body>
 </html>

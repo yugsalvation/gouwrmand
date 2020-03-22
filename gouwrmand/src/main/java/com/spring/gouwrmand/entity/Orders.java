@@ -1,13 +1,15 @@
 package com.spring.gouwrmand.entity;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "order")
-public class Order {
+@Table(name = "orders")
+public class Orders {
 	@Id
 	@Column(name = "order_id")
 	private int order_id;
@@ -23,9 +25,22 @@ public class Order {
 
 	@Column(name = "order_status")
 	private int order_status;
+	
+	
 
 	@Column(name = "item_quantity")
 	private String item_quantity;
+	
+	@Column(name = "orders_date")
+	private Date orders_date;
+	
+	public Date getOrders_date() {
+		return orders_date;
+	}
+
+	public void setOrder_date(Date orders_date) {
+		this.orders_date = orders_date;
+	}
 
 	public int getOrder_id() {
 		return order_id;
@@ -75,16 +90,16 @@ public class Order {
 		this.item_quantity = item_quantity;
 	}
 
-	public String getCustomer_id() {
+	public int getCustomer_id() {
 		return customer_id;
 	}
 
-	public void setCustomer_id(String customer_id) {
+	public void setCustomer_id(int customer_id) {
 		this.customer_id = customer_id;
 	}
 
 	@Column(name = "customer_id")
-	private String customer_id;
+	private int customer_id;
 
 }
 

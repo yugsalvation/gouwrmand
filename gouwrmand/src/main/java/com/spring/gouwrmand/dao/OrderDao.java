@@ -3,15 +3,16 @@ package com.spring.gouwrmand.dao;
 import java.sql.Date;
 import java.util.List;
 
-import com.spring.gouwrmand.entity.Order;
+import com.spring.gouwrmand.entity.Orders;
 
 public interface OrderDao {
-	public void addOrder(Order o);
-	public Order getOrder(int oid);
+	public void addOrder(Orders o);
+	public Orders getOrder(int oid);
 	public void deleteOrder(int oid);
-	public void updateOrder(Order o);
-	public List<Order> getMyOrders(int custid,Date from, Date to);
-	public List<Order> getOrders(Date from, Date to);
+	public void updateOrder(Orders o);
+	public List<Orders> getMyOrders(int custid,Date from, Date to);
+	public List<Orders> getOrders(Date from, Date to);
+	public List<Orders> getTodayOrders(Date today);
 	
 	
 	
