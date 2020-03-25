@@ -31,8 +31,6 @@ public class Orders {
 	private String item_quantity;
 	
 
-	@Column(name = "order_date")
-	private Date order_date;
 	
 	public Date getOrder_date() {
 		return order_date;
@@ -40,6 +38,7 @@ public class Orders {
 
 	public void setOrder_date(Date order_date) {
 		this.order_date = order_date;
+	}
 
 	@Column(name = "customer_id")
 	private int customer_id;
@@ -104,17 +103,9 @@ public class Orders {
 		this.customer_id = customer_id;
 	}
 
-	@Column(name = "customer_id")
-	private int customer_id;
-
 	
-	public Date getOrder_date() {
-		return order_date;
-	}
-
-	public void setOrder_date(Date order_date) {
-		this.order_date = order_date;
-	}
+	
+	
 	
 
 }
