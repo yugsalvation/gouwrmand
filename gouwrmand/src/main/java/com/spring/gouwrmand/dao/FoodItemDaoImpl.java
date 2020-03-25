@@ -45,7 +45,9 @@ public class FoodItemDaoImpl implements FoodItemDao {
 	@Transactional
 	public void updateFoodItem(FoodItem fi) {
 		Session currentSession=entityManager.unwrap(Session.class);
-	
+		
+		double d=fi.getFood_discount();
+		fi.setFood_discount(d/100);
 		String query="update FoodItem f set f.food_type=\'"+fi.getFood_type()+"\',f.food_name=\'"+fi.getFood_name()+"\',f.food_price="+fi.getFood_price()+",f.food_discount="+fi.getFood_discount()+",f.food_description=\'"+fi.getFood_description()+"\' where f.food_id="+fi.getFood_id();
 
 	

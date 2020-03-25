@@ -31,15 +31,15 @@ public class Orders {
 	@Column(name = "item_quantity")
 	private String item_quantity;
 	
-	@Column(name = "orders_date")
-	private Date orders_date;
+	@Column(name = "order_date")
+	private Date order_date;
 	
-	public Date getOrders_date() {
-		return orders_date;
+	public Date getOrder_date() {
+		return order_date;
 	}
 
-	public void setOrder_date(Date orders_date) {
-		this.orders_date = orders_date;
+	public void setOrder_date(Date order_date) {
+		this.order_date = order_date;
 	}
 
 	public int getOrder_id() {

@@ -13,7 +13,8 @@ public interface OrderDao {
 	public List<Orders> getMyOrders(int custid,Date from, Date to);
 	public List<Orders> getOrders(Date from, Date to);
 	public List<Orders> getTodayOrders(Date today);
-	
+	public void changeStatustoReady(int oid);
+
 	
 	
 }

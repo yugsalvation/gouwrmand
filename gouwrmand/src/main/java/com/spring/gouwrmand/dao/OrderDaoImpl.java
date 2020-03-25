@@ -26,9 +26,13 @@ public class OrderDaoImpl implements OrderDao {
 	}
 
 	@Override
+	@Transactional
 	public Orders getOrder(int oid) {
-		// TODO Auto-generated method stub
-		return null;
+		Session currentSession=entityManager.unwrap(Session.class);
+		String query="from Orders o where o.order_id="+oid;
+		Query<Orders>theQuery=currentSession.createQuery(query,Orders.class);
+		Orders o=theQuery.getSingleResult();
+		return o;
 	}
 
 	@Override
@@ -66,10 +70,22 @@ public class OrderDaoImpl implements OrderDao {
 	public List<Orders> getTodayOrders(Date today) {
 		Session currentSession=entityManager.unwrap(Session.class);
 	
-		String query="from Orders o where o.orders_date=\'"+today+"\' and o.order_status=0";
+		String query="from Orders o where o.order_date=\'"+today+"\' and o.order_status=0  order by order_id";
 		Query <Orders> theQuery=currentSession.createQuery(query,Orders.class);
 		List<Orders>l=theQuery.getResultList();
 		return l;
+	}
+
+	@Override
+	@Transactional
+	public void changeStatustoReady(int oid) {
+		Session currentSession=entityManager.unwrap(Session.class);
+		String query="update Orders o set o.order_status=1 where o.order_id="+oid;
+		
+		Query thequery=currentSession.createQuery(query);
+		
+		int result=thequery.executeUpdate();
+		
 	}
 
 }

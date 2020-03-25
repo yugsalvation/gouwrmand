@@ -42,8 +42,8 @@
    <div class="form-group">
 <label for="foodtype">Food Type:</label><form:input  class="form-control" path="food_type" /> <br/>
 <label for="foodname">Food Name:</label><form:input  class="form-control" path="food_name" /> <br/>
-<label for="fooddiscount">Food Price:</label><form:input  class="form-control" path="food_price"/> <br/>
-<label for="fooddiscount">Food Discount:</label><form:input  class="form-control" path="food_discount"/> <br/>
+<label for="foodprice">Food Price:</label><form:input  class="form-control" path="food_price"/> <br/>
+<label for="fooddiscount">Food Discount:</label><form:input  class="form-control" path="food_discount" value="${fi.food_discount*100}"/> <br/>
 <label for="fooddescription">Food Description:</label><form:input  class="form-control" path="food_description"/>  <br/>
 <form:input  class="form-control" path="food_status" type="hidden" value="1" />
 <form:input  class="form-control" path="food_id" type="hidden" />
