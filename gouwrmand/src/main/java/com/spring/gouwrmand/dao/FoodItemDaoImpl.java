@@ -15,7 +15,6 @@ import com.spring.gouwrmand.entity.FoodItem;
 @Repository
 public class FoodItemDaoImpl implements FoodItemDao {
 	@Autowired
-	//private SessionFactory sessionFactory;
 	private EntityManager entityManager;
 	
 	@Override

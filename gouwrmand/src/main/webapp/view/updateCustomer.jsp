@@ -20,7 +20,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-<title>registration</title>
+<title>Update Customer Details</title>
 </head>
 <body class="bg-light text-dark">
 <div class="container-fluid">
@@ -29,7 +29,7 @@
   <div class="col-sm-4">
 <div class="page-header">
 
- <h1 style="text-align:center;padding:5%;">Registration</h1></div> </div>
+ <h1 style="text-align:center;padding:5%;">Update a Customer Details</h1></div> </div>
 
   <div class="col-sm-4"></div>
  </div></div>
@@ -38,17 +38,17 @@
    <div class="col-sm-4"></div>
  <div class="col-sm-4">
  
-<form:form action="processRegistration" modelAttribute="c" style="background-color:rgb(220,220,220,0.8);padding:10%;">
+<form:form action="processUpdateCustomer" modelAttribute="c" style="background-color:rgb(220,220,220,0.8);padding:10%;">
    <div class="form-group">
 <label for="name">Name:</label><form:input  class="form-control" path="name"/> <form:errors path="name" cssClass="error" /><br/>
 <label for="address">Address:</label><form:input  class="form-control" path="address"/> <br/>
 <label for="date_of_birth">Date of birth:</label><form:input  type="date" class="form-control" path="date_of_birth"/> <br/>
-<label for="password">Password:</label><form:input type="password"  class="form-control" path="password"/> <br/>
-<label>Confirm Password:</label><input type="password"  class="form-control" /> <br/>
 <label for="email">Email Address:</label><form:input  class="form-control" path="email"/> <br/>
 <label for="phone_no">Phone Number:</label><form:input class="form-control" path="phone_no"/> <br/>
-<form:input  class="form-control" path="role_id" type="hidden" value="1" />
-<form:input  class="form-control" path="user_status" type="hidden" value="1" />
+<form:input class="form-control" path="customer_id" type="hidden"/>
+<form:input class="form-control" path="password" type="hidden"/>
+<form:input class="form-control" path="role_id" type="hidden"/>
+<form:input class="form-control" path="user_status" type="hidden"/>
 <div class="row" align="center">
 <div class="col-sm-4"></div>
 <div class="col-sm-4">
