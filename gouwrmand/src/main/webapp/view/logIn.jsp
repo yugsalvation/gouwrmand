@@ -20,7 +20,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-<title>registration</title>
+<title>LogInn</title>
 </head>
 <body class="bg-light text-dark">
 <div class="container-fluid">
@@ -29,7 +29,7 @@
   <div class="col-sm-4">
 <div class="page-header">
 
- <h1 style="text-align:center;padding:5%;">Registration</h1></div> </div>
+ <h1 style="text-align:center;padding:5%;">Login</h1></div> </div>
 
   <div class="col-sm-4"></div>
  </div></div>
@@ -40,8 +40,8 @@
  
 <form:form action="processRegistration" modelAttribute="c" style="background-color:rgb(220,220,220,0.8);padding:10%;">
    <div class="form-group">
-<label for="name">Name:</label><form:input  class="form-control" path="name"/> <form:errors path="name" cssClass="error" /><br/>
-<label for="address">Address:</label><form:input  class="form-control" path="address"/> <br/>
+<label for="email">LogIn:</label><form:input  class="form-control" path="email"/> <form:errors path="name" cssClass="error" /><br/>
+<label for="password">Password:</label><form:input  class="form-control" path="password"/> <br/>
 <label for="date_of_birth">Date of birth:</label><form:input  type="date" class="form-control" path="date_of_birth"/> <br/>
 <label for="password">Password:</label><form:input type="password"  class="form-control" path="password"/> <br/>
 <label>Confirm Password:</label><input type="password"  class="form-control" /> <br/>

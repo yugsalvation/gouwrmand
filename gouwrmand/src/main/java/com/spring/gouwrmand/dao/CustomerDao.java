@@ -17,4 +17,6 @@ public interface CustomerDao {
 	public void deleteCustomer(int customer_id);
 
 	public List<Orders> getCustReport(int customer_id, Date from, Date to);
+	
+	public Customer getByEmail(String email);
 }

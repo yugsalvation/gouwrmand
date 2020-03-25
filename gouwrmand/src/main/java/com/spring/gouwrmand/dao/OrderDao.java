@@ -12,9 +12,10 @@ public interface OrderDao {
 	public void updateOrder(Orders o);
 	public List<Orders> getMyOrders(int custid,Date from, Date to);
 	public List<Orders> getOrders(Date from, Date to);
+
 	public List<Orders> getTodayOrders(Date today);
 	public void changeStatustoReady(int oid);
-
 	
 	
+	public List<Orders> getAllOrder();
 }

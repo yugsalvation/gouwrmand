@@ -25,12 +25,12 @@ public class Orders {
 
 	@Column(name = "order_status")
 	private int order_status;
-	
-	
+
 
 	@Column(name = "item_quantity")
 	private String item_quantity;
 	
+
 	@Column(name = "order_date")
 	private Date order_date;
 	
@@ -40,7 +40,13 @@ public class Orders {
 
 	public void setOrder_date(Date order_date) {
 		this.order_date = order_date;
-	}
+
+	@Column(name = "customer_id")
+	private int customer_id;
+	
+	@Column(name = "order_date")
+	private Date order_date;
+
 
 	public int getOrder_id() {
 		return order_id;
@@ -100,6 +106,16 @@ public class Orders {
 
 	@Column(name = "customer_id")
 	private int customer_id;
+
+	
+	public Date getOrder_date() {
+		return order_date;
+	}
+
+	public void setOrder_date(Date order_date) {
+		this.order_date = order_date;
+	}
+	
 
 }
 

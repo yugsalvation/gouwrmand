@@ -32,6 +32,15 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
+<dependency>
+    <groupId>net.sf.jasperreports</groupId>
+    <artifactId>jasperreports</artifactId>
+    <version>6.12.2</version>
+</dependency>
+
+		
 	<dependency>
     <groupId>org.apache.tomcat</groupId>
     <artifactId>tomcat-jasper</artifactId>
