@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+ <meta http-equiv="refresh" content="10" />
 <title>View FoodItems</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
@@ -22,41 +23,43 @@
 <body class="bg-light text-dark">
 	<div class="container-fluid">
 	<br/>
-  <h1 style="text-align:center;">FOOD ITEMS</h1>
-  <br/><br/><br/>
-  <div class="row">
-  <div class="col-sm-4"></div>
-  <div class="col-sm-4">
+  <h1 style="text-align:center;">ORDERS TODAY</h1>
  <table class="table" style="margin-top:3%" >
     <thead>
       <tr class="active" align="center">
-      
-        <th>Select the Category</th>
-       
+      	<th></th>
+        <th>Name</th>
+       	<th>Items</th>
+       	<th>Total bill</th>
+       	<th>Change Status</th>
       </tr>
     </thead>
     <tbody>
 
-    <c:forEach var="food" items="${foodItems}">
-    
-
-      <tr class="active">
-       
-        <td align="center">
-        <a href="/viewFoodItems?category=${food}">
-        ${food} </a>
+    <c:forEach var="orders" items="${orders}" varStatus="i">
+     <c:url var="view" value="/viewOrderedItems">
+    	<c:param name="oid" value="${orders.order_id}"></c:param>
+    </c:url>
+    <c:url var="ready" value="/viewChangeStatusOrder">
+    <c:param name="oid" value="${orders.order_id}"></c:param>
+    </c:url>
+      <tr class="active" align="center">
+       	<td>${i.count} </td>
+        <td>${customername.get(i.count-1)}</td>
+         
+        <td>
+        <a href="${view}">View</a>
         </td>
-        
-        
-        
+        <td>${orders.order_total} </td>
+         <td>
+        <a href="${ready}" onclick="if(confirm('Sure! the order is ready?'))return true;return false">Ready</a>
+        </td>
       </tr>
      </c:forEach>
     </tbody>
   </table>
-  </div>
-  <div class="col-sm-4"></div>
+  <br/>
 
-  </div>
   </div>
 </body>
 </html>

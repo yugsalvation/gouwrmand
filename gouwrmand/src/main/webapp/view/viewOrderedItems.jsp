@@ -22,41 +22,29 @@
 <body class="bg-light text-dark">
 	<div class="container-fluid">
 	<br/>
-  <h1 style="text-align:center;">FOOD ITEMS</h1>
-  <br/><br/><br/>
-  <div class="row">
-  <div class="col-sm-4"></div>
-  <div class="col-sm-4">
+ <a href="/viewTodayOrders"> <h1 style="text-align:center;">Go Back</h1></a>
  <table class="table" style="margin-top:3%" >
     <thead>
       <tr class="active" align="center">
-      
-        <th>Select the Category</th>
-       
+        <th>Name</th>
+       	<th>Quantity</th>
+        
       </tr>
     </thead>
     <tbody>
 
-    <c:forEach var="food" items="${foodItems}">
+    <c:forEach var="order" items="${itemsname}" varStatus="i">
+      <tr class="active" align="center">
+        <td>${order} </td>
+        <td>${quantity.get(i.count-1)}</td>
+        
     
-
-      <tr class="active">
-       
-        <td align="center">
-        <a href="/viewFoodItems?category=${food}">
-        ${food} </a>
-        </td>
-        
-        
-        
       </tr>
      </c:forEach>
     </tbody>
   </table>
-  </div>
-  <div class="col-sm-4"></div>
+  <br/>
 
-  </div>
   </div>
 </body>
 </html>
