@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.gouwrmand.entity.FoodItem;
 
+
+
 @Repository
 public class FoodItemDaoImpl implements FoodItemDao {
 	@Autowired

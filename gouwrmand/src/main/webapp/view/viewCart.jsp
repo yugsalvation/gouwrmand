@@ -92,6 +92,6 @@ function down(min) {
   <br/>
   <h4 style="text-align: right;margin-right: 250px;">Total Amount: ${sum}</h4>
   </div>
-  <div style="text-align: center;"><a href="/placeOrder?cid=${cid}"><button type="button">Place your Order</button></a></div>
+  <div style="text-align: center;"><a href="/placeOrder?cid=${cid}&sum=${sum}"><button type="button">Place your Order</button></a></div>
 </body>
 </html>

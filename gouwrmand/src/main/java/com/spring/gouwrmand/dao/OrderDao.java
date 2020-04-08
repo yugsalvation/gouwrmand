@@ -11,7 +11,7 @@ public interface OrderDao {
 	public Orders getOrder(int oid);
 	public void deleteOrder(int oid);
 	public void updateOrder(Orders o);
-	public List<Orders> getMyOrders(int custid,Date from, Date to);
+	public List<Orders> getMyOrders(int cid);
 	public List<Orders> getOrders(Date from, Date to);
 
 	public List<Orders> getTodayOrders(Date today);

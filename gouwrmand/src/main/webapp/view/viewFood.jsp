@@ -62,7 +62,7 @@ function down(min) {
         <td>${food.food_type}</td>
         
         <td>
-        <a href="${add}" onclick="if(confirm('do you want to edit?'))return true; return false">Add</a>
+        <a href="${add}" onclick="if(confirm('do you want to add?'))return true; return false">Add</a>
         </td>
       </tr>
      </c:forEach>

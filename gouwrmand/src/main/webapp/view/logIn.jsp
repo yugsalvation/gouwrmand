@@ -1,67 +1,66 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login Page</title>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <!--Made with love by Mutiullah Samim -->
+   
+	<!--Bootsrap 4 CDN-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
-<title>LogInn</title>
+	<!--Custom styles-->
+	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-<body class="bg-light text-dark">
-<div class="container-fluid">
- <div class="row">
-  <div class="col-sm-4"></div>
-  <div class="col-sm-4">
-<div class="page-header">
-
- <h1 style="text-align:center;padding:5%;">Login</h1></div> </div>
-
-  <div class="col-sm-4"></div>
- </div></div>
-  <div class="container-fluid" >
-  <div class="row">
-   <div class="col-sm-4"></div>
- <div class="col-sm-4">
- 
-<form:form action="processRegistration" modelAttribute="c" style="background-color:rgb(220,220,220,0.8);padding:10%;">
-   <div class="form-group">
-<label for="email">LogIn:</label><form:input  class="form-control" path="email"/> <form:errors path="name" cssClass="error" /><br/>
-<label for="password">Password:</label><form:input  class="form-control" path="password"/> <br/>
-<label for="date_of_birth">Date of birth:</label><form:input  type="date" class="form-control" path="date_of_birth"/> <br/>
-<label for="password">Password:</label><form:input type="password"  class="form-control" path="password"/> <br/>
-<label>Confirm Password:</label><input type="password"  class="form-control" /> <br/>
-<label for="email">Email Address:</label><form:input  class="form-control" path="email"/> <br/>
-<label for="phone_no">Phone Number:</label><form:input class="form-control" path="phone_no"/> <br/>
-<form:input  class="form-control" path="role_id" type="hidden" value="1" />
-<form:input  class="form-control" path="user_status" type="hidden" value="1" />
-<div class="row" align="center">
-<div class="col-sm-4"></div>
-<div class="col-sm-4">
-<button type="submit" class="btn btn-dark">Submit</button>
+<body>
+<div class="container" style="position: absolute;margin: auto;
+  top: 0;right: 0;bottom: 0;left: 0;width: 400px;
+  height: 360px;" >
+	<div class="d-flex justify-content-center h-100" >
+		<div class="card" style="background-color: #a9a9a9;text-align: center" >
+			<div class="card-header">
+				<h3>Sign In</h3>
+			</div>
+			<div class="card-body">
+				<form action="homepage">
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="username">
+						
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="password">
+					</div>
+					<div class="row align-items-center remember">
+						<input type="checkbox">Remember Me
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Login" class="btn float-centre login_btn">
+					</div>
+				</form>
+			</div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					Don't have an account?<a href="#">Sign Up</a>
+				</div>
+				<div class="d-flex justify-content-center">
+					<a href="#">Forgot your password?</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-<div class="col-sm-4"></div>
-</div></div>
-</form:form>
-
-</div>
-
-
-  <div class="col-sm-4"></div>
-</div></div>
 </body>
 </html>
