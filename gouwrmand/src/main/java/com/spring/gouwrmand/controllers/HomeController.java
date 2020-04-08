@@ -11,12 +11,12 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.io.File;
+
 import java.io.FileNotFoundException;
-import java.sql.Date;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import java.util.List;
@@ -30,7 +30,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,14 +41,15 @@ import com.spring.gouwrmand.dao.FoodItemDao;
 import com.spring.gouwrmand.dao.InvoiceDao;
 import com.spring.gouwrmand.dao.OrderDao;
 import com.spring.gouwrmand.dao.RestaurantStaffDao;
-import com.spring.gouwrmand.dao.RoleDao;
 import com.spring.gouwrmand.entity.Cart;
 import com.spring.gouwrmand.entity.Customer;
 import com.spring.gouwrmand.entity.FoodItem;
+
 import com.spring.gouwrmand.entity.Invoice;
 import com.spring.gouwrmand.entity.Orders;
 import com.spring.gouwrmand.entity.RestaurantStaff;
 import com.spring.gouwrmand.entity.Role;
+
 
 
 import net.sf.jasperreports.engine.JRException;
@@ -87,28 +87,25 @@ public class HomeController {
 	
 	@RequestMapping("")
 	public String firstPage(HttpServletRequest request,HttpServletResponse response) {
-		//invoiceDao.addInvoice(new Invoice());
-
-
-	
-
+		//invoiceDao.addInvoice(new Invoice());	
+		Orders o=orderDao.getOrder(1);
+		invoiceDao.addInvoice(o);
 
 		//
-		response.addHeader("content-disposition", "attachment; filename=JasperTableExample.pdf");
-		String dataDirectory = request.getServletContext().getRealPath("/WebContent/resources/");
-		 String userHomeDirectory = System.getProperty("user.home");
-         /* Output file location */
-         String outputFile = userHomeDirectory+File.separatorChar +"Downloads"+ File.separatorChar+"reports"+ File.separatorChar+ "JasperTableExample.pdf";
-
-		Path file = Paths.get(outputFile);
-		try
-	    {
-	        Files.copy(file, response.getOutputStream());
-	        response.getOutputStream().flush();
-	    }
-	    catch (IOException ex) {
-	        ex.printStackTrace();
-	    }
+//		response.addHeader("content-disposition", "attachment; filename=JasperTableExample.pdf");
+//		 String userHomeDirectory = System.getProperty("user.home");
+//         /* Output file location */
+//         String outputFile = userHomeDirectory+File.separatorChar +"Downloads"+ File.separatorChar+"reports"+ File.separatorChar+ "JasperTableExample.pdf";
+//
+//		Path file = Paths.get(outputFile);
+//		try
+//	    {
+//	        Files.copy(file, response.getOutputStream());
+//	        response.getOutputStream().flush();
+//	    }
+//	    catch (IOException ex) {
+//	        ex.printStackTrace();
+//	    }
 		return "first";
 	}
 
@@ -373,8 +370,10 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/placeOrder", method = RequestMethod.GET)
+
 	public String placeOrder(Model theModel, @RequestParam("sum") double sum) {
 		Cart c = cartDao.getCart(1);
+
 	
 	String s = c.getOrder_cart();
 	s = s.substring(0, s.length()-1);
@@ -405,6 +404,7 @@ public class HomeController {
 		cartDao.updateCart(c);
 		theModel.addAttribute("cid", 1);
 		return "cartRedirect";
+
 	}
 
 	@RequestMapping(value = "/getReport", method = RequestMethod.GET)

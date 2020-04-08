@@ -3,6 +3,7 @@ package com.spring.gouwrmand.dao;
 import java.sql.Date;
 import java.util.List;
 
+import com.spring.gouwrmand.entity.Invoice;
 import com.spring.gouwrmand.entity.Orders;
 
 public interface OrderDao {

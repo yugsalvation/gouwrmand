@@ -12,6 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+
+import com.spring.gouwrmand.entity.FoodItem;
+import com.spring.gouwrmand.entity.Invoice;
+
 import com.spring.gouwrmand.entity.Orders;
 
 
@@ -26,12 +30,19 @@ public class OrderDaoImpl implements OrderDao {
 	public void addOrder(Orders o) {
 		Session session;
 		try {
+			
 			session = entityManager.unwrap(Session.class);
-			session.save(o);
-			//session.close();
+			
+			int id=(Integer)session.save(o);
+			System.out.println(id);
+
+			
+			
 		} catch (Exception e) {
 			System.out.print("failed addcustomer operation");
+			
 		}
+	
 	}
 	@Override
 	@Transactional
