@@ -11,7 +11,8 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-
+import java.util.Collection;
+import java.util.Collections;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.Date;
@@ -26,6 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
 import org.springframework.validation.BindingResult;
@@ -44,11 +46,11 @@ import com.spring.gouwrmand.dao.RoleDao;
 import com.spring.gouwrmand.entity.Cart;
 import com.spring.gouwrmand.entity.Customer;
 import com.spring.gouwrmand.entity.FoodItem;
-
 import com.spring.gouwrmand.entity.Invoice;
 import com.spring.gouwrmand.entity.Orders;
 import com.spring.gouwrmand.entity.RestaurantStaff;
 import com.spring.gouwrmand.entity.Role;
+
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -115,6 +117,18 @@ public class HomeController {
 		// restaurant side home page
 		return "homepage";
 	}
+	
+	@RequestMapping("/homepage")
+	public String indexPageOfCustomer() {
+		// restaurant side home page
+		return "customerHomepage";
+	}
+	
+	@RequestMapping("/login")
+	public String login() {
+		// restaurant side home page
+		return "logIn";
+	}
 
 	@RequestMapping("/addFoodItem")
 	public String addFoodItem(Model theModel) {
@@ -158,6 +172,13 @@ public class HomeController {
 		List<String> f = fooditemdao.getFoodCategories();
 		theModel.addAttribute("foodItems", f);
 		return "viewCategories";
+	}
+	
+	@RequestMapping("/viewCategoriesByCustomer")
+	public String viewCategoriesByCustomer(Model theModel) {
+		List<String> f = fooditemdao.getFoodCategories();
+		theModel.addAttribute("foodItems", f);
+		return "viewCategoriesByCustomer";
 	}
 
 	@RequestMapping("/viewTodayOrders")
@@ -236,8 +257,8 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/updateCustomer", method = RequestMethod.GET)
-	public String updateCustomer(Model theModel, @RequestParam("cid") int cid) {
-		Customer c = customerDao.getCustomer(cid);
+	public String updateCustomer(Model theModel) {
+		Customer c = customerDao.getCustomer(1);
 		theModel.addAttribute("c", c);
 		return "updateCustomer";
 	}
@@ -245,7 +266,7 @@ public class HomeController {
 	@RequestMapping("/processUpdateCustomer")
 	public String processUpdateCustomer(Model theModel, @ModelAttribute("c") Customer c) {
 		customerDao.updateCustomer(c);
-		return "first";
+		return "updateCustomer";
 	}
 
 	@RequestMapping(value = "/viewFoodItemsByCustomer", method = RequestMethod.GET)
@@ -274,13 +295,16 @@ public class HomeController {
 
 		cartDao.updateCart(c);
 
-		return "first";
+		return "categoriesRedirect";
 	}
 
 	@RequestMapping(value = "/viewCart", method = RequestMethod.GET)
-	public String viewCart(Model theModel, @RequestParam("cid") int cid) {
-		Cart c = cartDao.getCart(cid);
+	public String viewCart(Model theModel) {
+		Cart c = cartDao.getCart(1);
 		String s = c.getOrder_cart();
+		if(s==null) {
+			return "empty";
+		}
 		String q = c.getItem_quantity();
 		System.out.println("dsdfssfsfsd" + s);
 		List<FoodItem> list = new ArrayList<FoodItem>();
@@ -306,14 +330,13 @@ public class HomeController {
 		theModel.addAttribute("foodItems", list);
 		theModel.addAttribute("sum", sum);
 		theModel.addAttribute("l", l);
-		theModel.addAttribute("cid", cid);
+		//theModel.addAttribute("cid", 1);
 		return "viewCart";
 	}
 
 	@RequestMapping(value = "/addItemQty", method = RequestMethod.GET)
-	public String addItemQty(Model theModel, @RequestParam("fid") int fid, @RequestParam("qty") int qty,
-			@RequestParam("cid") int cid) {
-		Cart c = cartDao.getCart(cid);
+	public String addItemQty(Model theModel, @RequestParam("fid") int fid, @RequestParam("qty") int qty) {
+		Cart c = cartDao.getCart(1);
 		String s = c.getOrder_cart();
 		int index = 0;
 
@@ -326,14 +349,13 @@ public class HomeController {
 		sb.replace(index, index + 1, Integer.toString(qty));
 		c.setItem_quantity(sb.toString());
 		cartDao.updateCart(c);
-		theModel.addAttribute("cid", cid);
+		theModel.addAttribute("cid", 1);
 		return "cartRedirect";
 	}
 
 	@RequestMapping(value = "/minusItemQty", method = RequestMethod.GET)
-	public String minusItemQty(Model theModel, @RequestParam("fid") int fid, @RequestParam("qty") int qty,
-			@RequestParam("cid") int cid) {
-		Cart c = cartDao.getCart(cid);
+	public String minusItemQty(Model theModel, @RequestParam("fid") int fid, @RequestParam("qty") int qty) {
+		Cart c = cartDao.getCart(1);
 		String s = c.getOrder_cart();
 		int index = 0;
 
@@ -346,13 +368,13 @@ public class HomeController {
 		sb.replace(index, index + 1, Integer.toString(qty));
 		c.setItem_quantity(sb.toString());
 		cartDao.updateCart(c);
-		theModel.addAttribute("cid", cid);
+		theModel.addAttribute("cid", 1);
 		return "cartRedirect";
 	}
 
 	@RequestMapping(value = "/placeOrder", method = RequestMethod.GET)
-	public String placeOrder(Model theModel, @RequestParam("cid") int cid) {
-		Cart c = cartDao.getCart(cid);
+	public String placeOrder(Model theModel, @RequestParam("sum") double sum) {
+		Cart c = cartDao.getCart(1);
 	
 	String s = c.getOrder_cart();
 	s = s.substring(0, s.length()-1);
@@ -364,22 +386,45 @@ public class HomeController {
 		
 		Orders o = new Orders();
 		
-		o.setCustomer_id(cid);
+		o.setCustomer_id(1);
 		o.setItem_quantity(q);
 		o.setOrder_cart(s);
-		o.setOrder_date(null);
-		o.setOrder_status(1);
-		o.setOrder_status(1);
+		long millis=System.currentTimeMillis();  
+        java.sql.Date date=new java.sql.Date(millis);  
 		
+		o.setOrder_date(date);
+		o.setOrder_status(1);
+		o.setOrder_status(1);
+		o.setOrder_total(sum);
 		orderDao.addOrder(o);
 		
-		return "first";
+		c.setItem_quantity(null);
+		c.setOrder_cart(null);
+		c.setTotal(0);
+		
+		cartDao.updateCart(c);
+		theModel.addAttribute("cid", 1);
+		return "cartRedirect";
 	}
 
 	@RequestMapping(value = "/getReport", method = RequestMethod.GET)
 	public String getReport() throws JRException, FileNotFoundException {
-		String path = "C:\\Users\\Abc\\Desktop\\Report";
-		List<Orders> orders = orderDao.getAllOrder();
+		//String path = "C:\\Users\\Abc\\Desktop\\Report";
+		
+		String userHomeDirectory = System.getProperty("user.home");
+
+        /* Output file location */
+
+        String path = userHomeDirectory+File.separatorChar +"Downloads"+ File.separatorChar+"reports"+ File.separatorChar+ "JasperTableExample.pdf";
+//		List<Orders> orders = orderDao.getAllOrder();
+		long millis=System.currentTimeMillis();  
+        java.sql.Date from=new java.sql.Date(millis);  
+        
+        long milli=System.currentTimeMillis();  
+        java.sql.Date to=new java.sql.Date(milli);  
+        
+        
+		List<Orders> orders = orderDao.getOrders(from, to);
 		// load file and compile it
 		File file = ResourceUtils.getFile("classpath:myOrders.jrxml");
 		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
@@ -390,6 +435,31 @@ public class HomeController {
 		JasperExportManager.exportReportToPdfFile(jasperPrint, path + "\\.pdf");
 
 		return "first";
+	}
+	
+	@RequestMapping("/viewMyOrders")
+	public String viewMyOrders(Model theModel) {
+		String status=null;
+		List<Orders>o=ordersdao.getMyOrders(1);
+		Collections.reverse(o);
+		List<String>c=new ArrayList<String>();
+		List<String> st=new ArrayList<String>();
+		for (Orders order : o) {
+			c.add(customerDao.getCustomer(order.getCustomer_id()).getName());
+			if(order.getOrder_status()==1) {
+				status = "Your order is ready";
+			}
+			else {
+			status = "Being Prepared";
+			
+			}
+			st.add(status);
+		}
+	
+		theModel.addAttribute("orders",o);
+		theModel.addAttribute("customername",c);
+		theModel.addAttribute("status",st);
+		return "viewMyOrder";
 	}
 
 }

@@ -29,7 +29,7 @@
   <div class="col-sm-4">
 <div class="page-header">
 
- <h1 style="text-align:center;padding:5%;">Update a Customer Details</h1></div> </div>
+ <h1 style="text-align:center;padding:5%;">My Details</h1></div> </div>
 
   <div class="col-sm-4"></div>
  </div></div>
@@ -52,7 +52,7 @@
 <div class="row" align="center">
 <div class="col-sm-4"></div>
 <div class="col-sm-4">
-<button type="submit" class="btn btn-dark">Submit</button>
+<button style="margin-bottom: 30px;" type="submit" class="btn btn-dark">Update</button>
 </div>
 <div class="col-sm-4"></div>
 </div></div>

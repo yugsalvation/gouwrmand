@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.spring.gouwrmand.entity.FoodItem;
 
+
+
 public interface FoodItemDao {
 	public void addFoodItem(FoodItem fi);
 	public void deleteFoodItem(int fi);
