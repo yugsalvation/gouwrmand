@@ -12,10 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.sql.Date;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import java.util.List;
@@ -28,7 +25,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,16 +36,12 @@ import com.spring.gouwrmand.dao.FoodItemDao;
 import com.spring.gouwrmand.dao.InvoiceDao;
 import com.spring.gouwrmand.dao.OrderDao;
 import com.spring.gouwrmand.dao.RestaurantStaffDao;
-import com.spring.gouwrmand.dao.RoleDao;
 import com.spring.gouwrmand.entity.Cart;
 import com.spring.gouwrmand.entity.Customer;
 import com.spring.gouwrmand.entity.FoodItem;
 
-import com.spring.gouwrmand.entity.Invoice;
 import com.spring.gouwrmand.entity.Orders;
 import com.spring.gouwrmand.entity.RestaurantStaff;
-import com.spring.gouwrmand.entity.Role;
-
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -85,28 +77,25 @@ public class HomeController {
 	
 	@RequestMapping("")
 	public String firstPage(HttpServletRequest request,HttpServletResponse response) {
-		//invoiceDao.addInvoice(new Invoice());
-
-
-	
-
+		//invoiceDao.addInvoice(new Invoice());	
+		Orders o=orderDao.getOrder(1);
+		invoiceDao.addInvoice(o);
 
 		//
-		response.addHeader("content-disposition", "attachment; filename=JasperTableExample.pdf");
-		String dataDirectory = request.getServletContext().getRealPath("/WebContent/resources/");
-		 String userHomeDirectory = System.getProperty("user.home");
-         /* Output file location */
-         String outputFile = userHomeDirectory+File.separatorChar +"Downloads"+ File.separatorChar+"reports"+ File.separatorChar+ "JasperTableExample.pdf";
-
-		Path file = Paths.get(outputFile);
-		try
-	    {
-	        Files.copy(file, response.getOutputStream());
-	        response.getOutputStream().flush();
-	    }
-	    catch (IOException ex) {
-	        ex.printStackTrace();
-	    }
+//		response.addHeader("content-disposition", "attachment; filename=JasperTableExample.pdf");
+//		 String userHomeDirectory = System.getProperty("user.home");
+//         /* Output file location */
+//         String outputFile = userHomeDirectory+File.separatorChar +"Downloads"+ File.separatorChar+"reports"+ File.separatorChar+ "JasperTableExample.pdf";
+//
+//		Path file = Paths.get(outputFile);
+//		try
+//	    {
+//	        Files.copy(file, response.getOutputStream());
+//	        response.getOutputStream().flush();
+//	    }
+//	    catch (IOException ex) {
+//	        ex.printStackTrace();
+//	    }
 		return "first";
 	}
 
@@ -351,7 +340,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/placeOrder", method = RequestMethod.GET)
-	public String placeOrder(Model theModel, @RequestParam("cid") int cid) {
+	public String placeOrder(Model theModel, @RequestParam("cid") int cid,HttpServletRequest request,HttpServletResponse response) {
 		Cart c = cartDao.getCart(cid);
 	
 	String s = c.getOrder_cart();
@@ -367,12 +356,29 @@ public class HomeController {
 		o.setCustomer_id(cid);
 		o.setItem_quantity(q);
 		o.setOrder_cart(s);
-		o.setOrder_date(null);
+		Date d=new Date(Calendar.getInstance().getTime().getTime());
+		o.setOrder_date(d);
 		o.setOrder_status(1);
 		o.setOrder_status(1);
 		
-		orderDao.addOrder(o);
 		
+	//	o=orderDao.getOrder(id);
+	
+		invoiceDao.addInvoice(o);
+		response.addHeader("content-disposition", "attachment; filename=JasperTableExample.pdf");
+		 String userHomeDirectory = System.getProperty("user.home");
+        /* Output file location */
+        String outputFile = userHomeDirectory+File.separatorChar +"Desktop"+ File.separatorChar+"invoices"+ File.separatorChar+ "IN"+1+".pdf";
+
+		Path file = Paths.get(outputFile);
+		try
+	    {
+	        Files.copy(file, response.getOutputStream());
+	        response.getOutputStream().flush();
+	    }
+	    catch (IOException ex) {
+	        ex.printStackTrace();
+	    }
 		return "first";
 	}
 

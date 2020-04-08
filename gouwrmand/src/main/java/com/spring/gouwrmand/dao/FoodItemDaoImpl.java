@@ -17,6 +17,8 @@ public class FoodItemDaoImpl implements FoodItemDao {
 	@Autowired
 	private EntityManager entityManager;
 	
+	
+	
 	@Override
 	@Transactional
 	public void addFoodItem(FoodItem fi) {
@@ -82,7 +84,7 @@ public class FoodItemDaoImpl implements FoodItemDao {
 	@Transactional
 	public FoodItem getFoodItem(int fid) {
 		Session currentSession=entityManager.unwrap(Session.class);
-		String query="from FoodItem f where f.food_id=\'"+fid+"\'";
+		String query="from FoodItem f where f.food_id="+fid+"";
 		Query <FoodItem> theQuery=currentSession.createQuery(query,FoodItem.class);
 		FoodItem f=theQuery.getSingleResult();
 		
