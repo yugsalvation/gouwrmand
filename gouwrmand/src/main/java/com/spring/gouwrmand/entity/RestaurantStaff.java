@@ -1,6 +1,6 @@
 package com.spring.gouwrmand.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +13,9 @@ public class RestaurantStaff {
 	@Id
 	@Column(name = "staff_id")
 	private int staff_id;
+	
+	@Column(name = "staff_status")
+	private int staff_status;
 
 	@Column(name = "name")
 	private String name;
@@ -98,5 +101,14 @@ public class RestaurantStaff {
 	public void setRole_id(int role_id) {
 		this.role_id = role_id;
 	}
+
+	public int getStaff_status() {
+		return staff_status;
+	}
+
+	public void setStaff_status(int staff_status) {
+		this.staff_status = staff_status;
+	}
+	
 
 }

@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+ <meta http-equiv="refresh" content="0 url=/viewTodayOrders" />
 <title>Insert title here</title>
 </head>
 <body>
-dada bhagwan na aseem jai jai kar hoo :-)))
+
 </body>
 </html>

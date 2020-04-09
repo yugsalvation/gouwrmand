@@ -62,13 +62,7 @@ body{
       <a class="nav-link" href="javascript:loadFrame('addFoodItem')">Add Food Item</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="javascript:loadFrame('viewCategories')">Food Items</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="javascript:loadFrame('viewTodayOrders')">View Orders</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="javascript:loadFrame('getReport')">Get Daily Reports</a>
+      <a class="nav-link" href="#">View Orders</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">Reports</a>
