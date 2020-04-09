@@ -68,6 +68,9 @@ body{
       <a class="nav-link" href="javascript:loadFrame('viewTodayOrders')">View Orders</a>
     </li>
     <li class="nav-item">
+      <a class="nav-link" href="javascript:loadFrame('getReport')">Get Daily Reports</a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" href="#">Reports</a>
     </li>
     

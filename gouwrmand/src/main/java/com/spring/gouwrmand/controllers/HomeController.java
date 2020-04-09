@@ -407,14 +407,13 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/getReport", method = RequestMethod.GET)
-	public String getReport() throws JRException, FileNotFoundException {
+	public String getReport(HttpServletRequest request,HttpServletResponse response) throws JRException, FileNotFoundException {
 		//String path = "C:\\Users\\Abc\\Desktop\\Report";
 		
 		String userHomeDirectory = System.getProperty("user.home");
 
         /* Output file location */
 
-        String path = userHomeDirectory+File.separatorChar +"Downloads"+ File.separatorChar+"reports"+ File.separatorChar+ "JasperTableExample.pdf";
 //		List<Orders> orders = orderDao.getAllOrder();
 		long millis=System.currentTimeMillis();  
         java.sql.Date from=new java.sql.Date(millis);  
@@ -422,7 +421,7 @@ public class HomeController {
         long milli=System.currentTimeMillis();  
         java.sql.Date to=new java.sql.Date(milli);  
         
-        
+        String path = userHomeDirectory+File.separatorChar +"Desktop"+ File.separatorChar+"reports"+ File.separatorChar+to+".pdf";
 		List<Orders> orders = orderDao.getOrders(from, to);
 		// load file and compile it
 		File file = ResourceUtils.getFile("classpath:myOrders.jrxml");
@@ -431,8 +430,23 @@ public class HomeController {
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("createdBy", "Java Techie");
 		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
-		JasperExportManager.exportReportToPdfFile(jasperPrint, path + "\\.pdf");
+		JasperExportManager.exportReportToPdfFile(jasperPrint, path);
+		
+		response.addHeader("content-disposition", "attachment; filename="+to+".pdf");
+	// String userHomeDirectory = System.getProperty("user.home");
+        /* Output file location */
+        //String outputFile = userHomeDirectory+File.separatorChar +"Downloads"+ File.separatorChar+"reports"+ File.separatorChar+ "JasperTableExample.pdf";
 
+		Path file2 = Paths.get(path);
+		try
+	    {
+	        Files.copy(file2, response.getOutputStream());
+	        response.getOutputStream().flush();
+	    }
+	    catch (IOException ex) {
+	        ex.printStackTrace();
+	    }
+		
 		return "first";
 	}
 	
