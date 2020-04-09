@@ -370,7 +370,6 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/placeOrder", method = RequestMethod.GET)
-
 	public String placeOrder(Model theModel, @RequestParam("sum") double sum) {
 		Cart c = cartDao.getCart(1);
 
@@ -396,12 +395,19 @@ public class HomeController {
 		o.setOrder_total(sum);
 		orderDao.addOrder(o);
 		
+		List<Orders> orders = orderDao.getAllOrder();
+		Collections.reverse(orders);
+		
+		
 		c.setItem_quantity(null);
 		c.setOrder_cart(null);
 		c.setTotal(0);
 		
 		cartDao.updateCart(c);
 		theModel.addAttribute("cid", 1);
+		
+		invoiceDao.addInvoice(orders.get(0));
+		theModel.addAttribute("oid", orders.get(0).getOrder_id());
 		return "cartRedirect";
 
 	}
