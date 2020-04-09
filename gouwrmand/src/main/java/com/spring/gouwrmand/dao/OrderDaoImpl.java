@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import com.spring.gouwrmand.entity.Customer;
 import com.spring.gouwrmand.entity.FoodItem;
 import com.spring.gouwrmand.entity.Invoice;
 
@@ -29,12 +29,19 @@ public class OrderDaoImpl implements OrderDao {
 	@Transactional
 	public void addOrder(Orders o) {
 		Session session;
+		int oid=0;
 		try {
 			
 			session = entityManager.unwrap(Session.class);
 			
 			int id=(Integer)session.save(o);
 			System.out.println(id);
+			
+//			String query = "TOP 1* from orders order by order_id des";
+//			Orders or = (Orders)session.createQuery(query);
+//			
+//			oid= or.getOrder_id();
+//			 
 
 			
 			
@@ -42,6 +49,7 @@ public class OrderDaoImpl implements OrderDao {
 			System.out.print("failed addcustomer operation");
 			
 		}
+	//	return oid;
 	
 	}
 	@Override
