@@ -393,8 +393,7 @@ public class HomeController {
         java.sql.Date date=new java.sql.Date(millis);  
 		
 		o.setOrder_date(date);
-		o.setOrder_status(1);
-		o.setOrder_status(1);
+		o.setOrder_status(0);
 		o.setOrder_total(sum);
 		orderDao.addOrder(o);
 		
